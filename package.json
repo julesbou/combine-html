@@ -1,0 +1,19 @@
+{
+  "name": "combine-html",
+  "version": "0.0.1",
+  "description": "combine html templates into a js file",
+  "main": "combine.js",
+  "scripts": {
+    "test": "mocha combine.test.js"
+  },
+  "author": "julesbou",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.4.5"
+  },
+  "dependencies": {
+    "async": "^2.0.0-rc.4",
+    "glob": "^7.0.3"
+  }
+}
