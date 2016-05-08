@@ -26,7 +26,7 @@ describe('combine', function() {
 
   it('amd', function(done) {
     combine('test-fixtures/simple.html', { amd: true }, function(combined) {
-      assert.equal(combined, 'define(function() { return {"test-fixtures/simple.html":"<h1>Hello</h1><p>Dolor</p>"}; })')
+      assert.equal(combined, 'define(function() { return {"test-fixtures/simple.html":"<h1>Hello</h1><p>Dolor</p>"}; });')
       done()
     })
   })

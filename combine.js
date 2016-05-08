@@ -1,8 +1,8 @@
 'use strict'
 
 const fs = require('fs')
-const async = require('async')
 const glob = require('glob')
+const async = require('async')
 
 module.exports = function(dest, opts, callback) {
   let json = {}
@@ -31,7 +31,7 @@ module.exports = function(dest, opts, callback) {
 
   function wrap(json) {
     if (opts.amd) {
-      return `define(function() { return ${JSON.stringify(json)}; })`
+      return `define(function() { return ${JSON.stringify(json)}; });`
     }
     else if (opts.commonJS) {
       return `module.exports = ${JSON.stringify(json)};`
