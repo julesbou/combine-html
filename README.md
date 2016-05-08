@@ -1,4 +1,4 @@
-## Combine HTML
+## Combine HTML [![Build Status](https://travis-ci.org/julesbou/combine-html.svg?branch=master)](https://travis-ci.org/julesbou/combine-html)
 
 Combine HTML templates in a JavaScript file
 
