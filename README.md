@@ -39,7 +39,7 @@ combine-html templates/**/*.html --global myVar > templates.js
 ```js
 const combine = require('combine-html')
 
-combine('templates/template.html', {})
+combine('templates/template.html')
 combine('templates/template.html', { root: 'templates/' })
 combine('templates/template.html', { amd: true })
 combine('templates/template.html', { commonJS: true })

@@ -6,6 +6,7 @@ const async = require('async')
 
 module.exports = function(dest, opts) {
   let json = {}
+  opts = opts || {}
 
   return new Promise((resolve, reject) => {
     glob(dest, (err, files) => {

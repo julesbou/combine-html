@@ -6,7 +6,7 @@ const combine = require('./combine.js')
 describe('combine', function() {
 
   it('combine', function(done) {
-    combine('test-fixtures/**.html', {}).then(function(combined) {
+    combine('test-fixtures/**.html').then(function(combined) {
       assert.deepEqual(combined, {
         'test-fixtures/simple.html': '<h1>Hello</h1><p>Dolor</p>',
         'test-fixtures/quote.html': '<h1 class=\"attr\">Hello</h1><p class=\'attr\'>Ipsum</p>'
