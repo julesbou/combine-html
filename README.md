@@ -6,6 +6,13 @@ Combine HTML templates in a JavaScript file
 npm install combine-html
 ```
 
+## Motivation
+
+There's already lots of tools allowing you to combine html files into a single one,
+but they all depend on grunt or gulp or webpack or requirejs or browserify...
+
+What I needed was to combine those html files with one simple command and nothing more.
+
 ## Cli
 
 ```bash
