@@ -4,18 +4,20 @@ const fs = require('fs')
 const glob = require('glob')
 const async = require('async')
 
-module.exports = function(dest, opts, callback) {
+module.exports = function(dest, opts) {
   let json = {}
 
-  glob(dest, (err, files) => {
-    if (err) throw err
-    async.each(files , (file, next) => {
-      fs.readFile(file, 'utf-8', (err, content) => {
-        if (err) throw err
-        json[convertFileName(file)] = convertFileContent(content)
-        next()
-      })
-    }, () => callback(wrap(json)))
+  return new Promise((resolve, reject) => {
+    glob(dest, (err, files) => {
+      if (err) throw err
+      async.each(files , (file, next) => {
+        fs.readFile(file, 'utf-8', (err, content) => {
+          if (err) throw err
+          json[convertFileName(file)] = convertFileContent(content)
+          next()
+        })
+      }, () => resolve(wrap(json)))
+    })
   })
 
   function convertFileName(file) {

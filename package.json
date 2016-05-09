@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "combine html templates into a js file",
   "main": "combine.js",
+  "bin": {
+    "combine-html": "./combine.cli.js"
+  },
   "scripts": {
     "test": "mocha combine.test.js"
   },
@@ -14,6 +17,7 @@
   },
   "dependencies": {
     "async": "^2.0.0-rc.4",
+    "commander": "^2.9.0",
     "glob": "^7.0.3"
   }
 }

@@ -2,44 +2,55 @@
 
 Combine HTML templates in a JavaScript file
 
-```
+```bash
 npm install combine-html
+```
+
+## Cli
+
+```bash
+npm install combine-html -g
+
+combine-html -h
+
+combine-html templates/**/*.html > templates.js
+# {'templates/template.html': '<template content>'}
+
+combine-html templates/**/*.html --root templates/ > templates.js
+# {'template.html': '<template content>'}
+
+combine-html templates/**/*.html --amd > templates.js
+# define(function() { return {"templates/template.html": "<template content>"}; });
+
+combine-html templates/**/*.html --commonJS > templates.js
+# module.exports = {"templates/template.html": "<template content>"};
+
+combine-html templates/**/*.html --es2015 > templates.js
+# export default {"templates/template.html": "<template content>"};
+
+combine-html templates/**/*.html --global myVar > templates.js
+# var myVar = {"templates/template.html": "<template content>"};
 ```
 
 ## Usage
 
+`combine()` returns a JavaScript Promise:
+
 ```js
 const combine = require('combine-html')
 
-combine('html/template.html', {}, function(combined) {
-  // {'html/template.html': '<template content>'}
-})
-
-combine('html/template.html', { root: 'html/' }, function(combined) {
-  // {'template.html': '<template content>'}
-})
-
-combine('html/template.html', { amd: true }, function(combined) {
-  // 'define(function() { return {"html/template.html": "<template content>"}; });'
-})
-
-combine('html/template.html', { commonJS: true }, function(combined) {
-  // 'module.exports = {"html/template.html": "<template content>"};'
-})
-
-combine('html/template.html', { es2015: true }, function(combined) {
-  // 'export default {"html/template.html": "<template content>"};'
-})
-
-combine('html/template.html', { global: 'myVar' }, function(combined) {
-  // 'var myVar = {"html/template.html": "<template content>"};'
-})
+combine('templates/template.html', {})
+combine('templates/template.html', { root: 'templates/' })
+combine('templates/template.html', { amd: true })
+combine('templates/template.html', { commonJS: true })
+combine('templates/template.html', { es2015: true })
+combine('templates/template.html', { global: 'myVar' })
 ```
 
-You can use any directory pattern recognized by [`node-glb`](https://github.com/isaacs/node-glob#glob-primer), so
+You can use any directory pattern recognized by [`node-glob`](https://github.com/isaacs/node-glob#glob-primer), so
 for example:
 
 ```js
 // match all .html files in all directories (sub-directories included)
-combine('html/**/*.html', {}, function(combined) { ... })
+combine('templates/**/*.html', {})
 ```
