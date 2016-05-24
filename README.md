@@ -10,54 +10,35 @@ npm install combine-html
 
 There's already lots of tools allowing you to combine html files into a single one,
 but they all depend on grunt or gulp or webpack or requirejs or browserify...
-
-What I needed was to combine those html files with one simple command and nothing more.
+My need was to combine those html files with one simple command and nothing more.
 
 ## Cli
 
 ```bash
 npm install combine-html -g
-
 combine-html -h
 
 combine-html templates/**/*.html > templates.js
-# {'templates/template.html': '<template content>'}
-
 combine-html templates/**/*.html --root templates/ > templates.js
-# {'template.html': '<template content>'}
-
 combine-html templates/**/*.html --amd > templates.js
-# define(function() { return {"templates/template.html": "<template content>"}; });
-
 combine-html templates/**/*.html --commonJS > templates.js
-# module.exports = {"templates/template.html": "<template content>"};
-
 combine-html templates/**/*.html --es2015 > templates.js
-# export default {"templates/template.html": "<template content>"};
-
 combine-html templates/**/*.html --global myVar > templates.js
-# var myVar = {"templates/template.html": "<template content>"};
 ```
 
-## Usage
+## Node
 
 `combine()` returns a JavaScript Promise:
 
 ```js
 const combine = require('combine-html')
 
-combine('templates/template.html')
-combine('templates/template.html', { root: 'templates/' })
-combine('templates/template.html', { amd: true })
-combine('templates/template.html', { commonJS: true })
-combine('templates/template.html', { es2015: true })
-combine('templates/template.html', { global: 'myVar' })
+combine('templates/**/*.html')
+combine('templates/**/*.html', { root: 'templates/' })
+combine('templates/**/*.html', { amd: true })
+combine('templates/**/*.html', { commonJS: true })
+combine('templates/**/*.html', { es2015: true })
+combine('templates/**/*.html', { global: 'myVar' })
 ```
 
-You can use any directory pattern recognized by [`node-glob`](https://github.com/isaacs/node-glob#glob-primer), so
-for example:
-
-```js
-// match all .html files in all directories (sub-directories included)
-combine('templates/**/*.html', {})
-```
+You can use any directory pattern recognized by [`node-glob`](https://github.com/isaacs/node-glob#glob-primer).
