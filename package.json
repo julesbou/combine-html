@@ -1,6 +1,6 @@
 {
   "name": "combine-html",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "combine html templates into a js file",
   "main": "combine.js",
   "bin": {

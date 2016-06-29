@@ -45,6 +45,6 @@ module.exports = function(dest, opts) {
     else if (opts.global) {
       return `var ${opts.global} = ${JSON.stringify(json)};`
     }
-    return json
+    return JSON.stringify(json)
   }
 }

@@ -7,19 +7,19 @@ describe('combine', function() {
 
   it('combine', function(done) {
     combine('test-fixtures/**.html').then(function(combined) {
-      assert.deepEqual(combined, {
-        'test-fixtures/simple.html': '<h1>Hello</h1><p>Dolor</p>',
-        'test-fixtures/quote.html': '<h1 class=\"attr\">Hello</h1><p class=\'attr\'>Ipsum</p>'
-      })
+      assert.deepEqual(combined,
+       JSON.stringify({
+         "test-fixtures/quote.html":"<h1 class=\"attr\">Hello</h1><p class='attr'>Ipsum</p>",
+         "test-fixtures/simple.html":"<h1>Hello</h1><p>Dolor</p>"
+       })
+      )
       done()
     })
   })
 
   it('root', function(done) {
     combine('test-fixtures/simple.html', { root: 'test-fixtures/' }).then(function(combined) {
-      assert.deepEqual(combined, {
-        'simple.html': '<h1>Hello</h1><p>Dolor</p>'
-      })
+      assert.deepEqual(combined, JSON.stringify({"simple.html":"<h1>Hello</h1><p>Dolor</p>"}))
       done()
     })
   })
